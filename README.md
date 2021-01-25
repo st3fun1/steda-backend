@@ -48,10 +48,31 @@
 
 # API Endpoints
 
+## Photos
+
 |     API                 | Description                           | Request body | Response body   |
 |-------------------------| --------------------------------------| ------------ | ----------------|
 | GET /api/Photos         | get all photos                        | none         | array of photos |
 | GET /api/Photos/{id}    | get a photo by Id                     | none         | photo           |
 | POST /api/Photos        | upload new photo                      | photo        | photo metadata  |
 | PUT /api/Photos/{id}    | update an existing photo(name, frame) | photo        | none            |
-| DELETE /api/Photos/{id} | delete an existing photo              | none         |    none         |
+| DELETE /api/Photos/{id} | delete an existing photo              | none         | none            |
+
+## Comments
+
+|     API                           | Description                           | Request body | Response body     |
+|-----------------------------------|---------------------------------------| ------------ | ------------------|
+| GET /api/Comments/{photoId}       | get all comments by photo id          | none         | array of comments |
+| POST /api/Comments/{photoId}      | add new comment                       | comment      | array of comments |
+| PUT /api/Comments/{photoId}       | update an existing comment            | comment      | none              |
+| DELETE /api/Comments/{photoId}    | delete an existing comment            | none         | none              |
+
+
+## Like/dislike system
+
+|     API                                | Description                           | Request body | Response body     |
+|----------------------------------------|---------------------------------------| ------------ | ------------------|
+| POST /api/Photos/{photoId}/like        | like a photo                          | none         | like              |            
+| DELETE /api/Photos/{photoId}/like      | dislike a photo                       | none         | none              |
+
+## User authentication
