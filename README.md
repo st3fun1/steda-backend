@@ -11,6 +11,7 @@
 5. User Story: As an authenticated user, I can see a personal Tumblr like list of images.
 5. User Story: As an unauthenticated user, I can browse other users' walls of images.
 6. User Story: As an authenticated user, if I upload an image that is broken, it will be replaced by a placeholder image. (can use jQuery broken image detection)
+7. Customizable theme
 
 ## Main technologies front end
 1. React.js + Redux
@@ -44,3 +45,13 @@
 2. Photos - 1 to 1 relationship with the User
 3. Comments - n to 1 relationship with the User
 
+
+# API Endpoints
+
+|     API                 | Description                           | Request body | Response body   |
+|-------------------------| --------------------------------------| ------------ | ----------------|
+| GET /api/Photos         | get all photos                        | none         | array of photos |
+| GET /api/Photos/{id}    | get a photo by Id                     | none         | photo           |
+| POST /api/Photos        | upload new photo                      | photo        | photo metadata  |
+| PUT /api/Photos/{id}    | update an existing photo(name, frame) | photo        | none            |
+| DELETE /api/Photos/{id} | delete an existing photo              | none         |    none         |
