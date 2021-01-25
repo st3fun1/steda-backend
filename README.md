@@ -1,0 +1,46 @@
+# Tumblr + Pinterest clone
+
+**Objective**: Full stack application that shows personal uploaded images/videos/music in a mosaic/or tumblr like cards.
+
+## User Stories
+
+1. User Story: As an unauthenticated user, I can login with a normal account(token based) or with Facebook/Github. For the moment: max accounts number = 2.
+2. User Story: As an authenticated user, I can link to images.
+3. User Story: As an authenticated user, I can delete images that I've linked to.
+4. User Story: As an authenticated user, I can see a Pinterest-style wall of all the images I've linked to.
+5. User Story: As an authenticated user, I can see a personal Tumblr like list of images.
+5. User Story: As an unauthenticated user, I can browse other users' walls of images.
+6. User Story: As an authenticated user, if I upload an image that is broken, it will be replaced by a placeholder image. (can use jQuery broken image detection)
+
+## Main technologies front end
+1. React.js + Redux
+2. Typescript
+3. Masonry.js
+4. React Bootstrap
+5. Maybe storybook - for trying to develop new component 
+
+## Main frotend components
+
+1. Comment component
+2. Masonry grid
+3. Tumblr like card
+4. User profile
+5. Search box with filters for images, videos, music
+6. Navigation bar / sidebar
+
+
+## Main API routes 
+
+
+
+## Main technologies backend
+1. ASP.NET core
+2. Entity core framework
+
+
+## Main domains
+
+1. Users
+2. Photos - 1 to 1 relationship with the User
+3. Comments - n to 1 relationship with the User
+
