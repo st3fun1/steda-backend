@@ -1,16 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using System;
+using Microsoft.EntityFrameworkCore;
+using Steda_backend.Authentication;
 
 namespace Steda_backend
 {
@@ -26,7 +22,11 @@ namespace Steda_backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            string mysqlConnString = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContextPool<AppDbContext>(options => 
+                    options.UseMySql(mysqlConnString, new MySqlServerVersion(new Version(8, 0, 23)))   // Everything from this point on is optional but helps with debugging.
+                            .EnableSensitiveDataLogging()
+                            .EnableDetailedErrors());
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

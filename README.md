@@ -72,7 +72,6 @@
 
 |     API                                | Description                           | Request body | Response body     |
 |----------------------------------------|---------------------------------------| ------------ | ------------------|
-| POST /api/Photos/{photoId}/like        | like a photo                          | none         | like              |            
-| DELETE /api/Photos/{photoId}/like      | dislike a photo                       | none         | none              |
+| POST /api/Photos/{photoId}/like?liked={something}        | like a photo                          | none         | like              |            
 
 ## User authentication
