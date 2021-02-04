@@ -6,8 +6,8 @@ using Steda_backend.Models;
 // functionality for a data model
 // it must registered with the DI container which provide
 // the service to controllers
-namespace Steda_backend.Authentication {
-    public class AppDbContext : IdentityDbContext<ApplicationUser> {
+namespace Steda_backend.Models {
+    public class AppDbContext : IdentityDbContext<AppUser> {
        public DbSet<Photo> Photos {get; set;}
 
        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) {}

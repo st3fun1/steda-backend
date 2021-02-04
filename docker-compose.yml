@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  db:
+    image: mysql:latest
+    container_name: steda-db
+    environment:
+      MYSQL_DATABASE: steda-db
+      MYSQL_ROOT_PASSWORD: steda
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data/db:/var/lib/mysql

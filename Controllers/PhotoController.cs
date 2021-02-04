@@ -4,7 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Steda_backend.Models;
-using Steda_backend.Authentication;
+using Steda_backend.Errors;
+using System.Net;
 
 namespace Steda_backend.Controllers
 {
@@ -89,7 +90,9 @@ namespace Steda_backend.Controllers
             var photo = await _db.Photos.FindAsync(id);
             if (photo == null)
             {
-                return NotFound();
+               throw new RestException(HttpStatusCode.NotFound, new {
+                   photo = "Not found"
+               });
             }
 
             _db.Photos.Remove(photo);

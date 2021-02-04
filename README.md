@@ -75,3 +75,19 @@
 | POST /api/Photos/{photoId}/like?liked={something}        | like a photo                          | none         | like              |            
 
 ## User authentication
+
+
+
+# JWT Token
+
+* Header - what token is - typ, alg(hashing alghoritm)
+* Payload
+    - data stored inside jwt
+    - nbf - not before
+    - exp - expire date
+    - iat - issued at date
+* Signature
+    -  server uses to verify if token is valid and not modified
+    - when server sends the token out it is encrypted with the algorithm
+
+- access resource with token 

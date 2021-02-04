@@ -6,11 +6,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Steda_backend.Models;
 
+
 namespace Steda_backend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210128214654_PhotoUpateMigration")]
-    partial class PhotoUpateMigration
+    [Migration("20210131193858_IdentityMigration")]
+    partial class IdentityMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -147,7 +148,7 @@ namespace Steda_backend.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Steda_backend.Authentication.ApplicationUser", b =>
+            modelBuilder.Entity("Steda_backend.Authentication.AppUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
@@ -157,6 +158,9 @@ namespace Steda_backend.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("DisplayName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Email")
@@ -238,6 +242,15 @@ namespace Steda_backend.Migrations
                     b.HasKey("PhotoID");
 
                     b.ToTable("Photos");
+
+                    b.HasData(
+                        new
+                        {
+                            PhotoID = 10,
+                            Description = "This is a nice photo",
+                            Name = "My test photo",
+                            Url = "www.google.com"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -251,7 +264,7 @@ namespace Steda_backend.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Steda_backend.Authentication.ApplicationUser", null)
+                    b.HasOne("Steda_backend.Authentication.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -260,7 +273,7 @@ namespace Steda_backend.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Steda_backend.Authentication.ApplicationUser", null)
+                    b.HasOne("Steda_backend.Authentication.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -275,7 +288,7 @@ namespace Steda_backend.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Steda_backend.Authentication.ApplicationUser", null)
+                    b.HasOne("Steda_backend.Authentication.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -284,7 +297,7 @@ namespace Steda_backend.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Steda_backend.Authentication.ApplicationUser", null)
+                    b.HasOne("Steda_backend.Authentication.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
